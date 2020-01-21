@@ -123,7 +123,7 @@ public class FlowParticlesAlongSpline : MonoBehaviour {
 	{
 		if (m_System == null) {
 			m_System = GetComponent<ParticleSystem> ();
-			endTargetPos = new Vector3[m_System.maxParticles];
+			endTargetPos = new Vector3[m_System.main.maxParticles];
 			SetupEndTargets ();
 		}
 

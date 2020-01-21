@@ -6,7 +6,7 @@ using UnityEngine;
 public class SetColorOfSprayingThings : MonoBehaviour
 {
 
-    public ParticleSystem particleSystem;
+    public ParticleSystem pSystem;
     public Material material;
     Interactable_ChooseColor chooseColor;
     Color prevColor;
@@ -27,7 +27,8 @@ public class SetColorOfSprayingThings : MonoBehaviour
     }
 
     void SetColor(){
-        particleSystem.startColor = chooseColor.color;
+        ParticleSystem.MainModule module = pSystem.main;
+        module.startColor = chooseColor.color;
         material.color = chooseColor.color;
     }
 }

@@ -19,7 +19,9 @@ public class VR_Controller : MonoBehaviour {
     }
 
     void Update () {
-      
+        
+        #pragma warning disable 0618
+
         if (rightHand) {
             this.transform.position = InputTracking.GetLocalPosition(XRNode.RightHand);
             this.transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
@@ -28,7 +30,9 @@ public class VR_Controller : MonoBehaviour {
             this.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand);
             this.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
         }
-      
+
+        #pragma warning restore 0618
+
         speed = Mathf.Lerp(speed, Vector3.Distance(prev, this.transform.position), .6f);
         prev = this.transform.position;
     }

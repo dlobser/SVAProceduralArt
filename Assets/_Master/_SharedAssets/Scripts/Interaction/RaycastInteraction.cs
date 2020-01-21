@@ -14,7 +14,7 @@ public class RaycastInteraction : MonoBehaviour {
     public bool useMouse;
 
 	public delegate void MouseHasHit();
-	public static event MouseHasHit mouseHasHit;
+	//public static event MouseHasHit mouseHasHit;
     [Tooltip("turn this off to only raycast when a button is clicked")]
     public bool alwaysActive = true;
     [Tooltip("Drag in a button component, or leave this slot empty")]

@@ -58,7 +58,7 @@ public class FlowParticlesAlongSplineWImage : MonoBehaviour {
 		Color b = Color.black;
 		float counter = 1000;
 		Vector3 r = Vector3.zero;
-		bool checkDistance = false;
+		//bool checkDistance = false;
 		while (counter > 0 && b.Equals(Color.black)) {
 			Vector2 R = new Vector2 (Random.Range (0, image.width), Random.Range (0, image.height));
 			b = image.GetPixel ((int)R.x,(int)R.y);
@@ -124,7 +124,7 @@ public class FlowParticlesAlongSplineWImage : MonoBehaviour {
 				Mathf.SmoothStep(0,1,timeLerp*lerpToTarget.z)
 			);
 			m_Particles [i].position += GetNoisePosition (noiseData.w+(m_Particles [i].position.x*noiseData.x)+Time.time*noiseData.y)*noiseData.z;
-			m_Particles [i].color = Color.Lerp (m_Particles [i].color, lerpToColor, timeLerp * amountToLerpColor);
+			m_Particles [i].startColor = Color.Lerp (m_Particles [i].startColor, lerpToColor, timeLerp * amountToLerpColor);
 			m_Particles [i].startSize = map(particleSize[i],0,1,particleSizeMinMax.x,particleSizeMinMax.y);
 		}
 
@@ -142,8 +142,8 @@ public class FlowParticlesAlongSplineWImage : MonoBehaviour {
 	{
 		if (m_System == null) {
 			m_System = GetComponent<ParticleSystem> ();
-			endTargetPos = new Vector3[m_System.maxParticles];
-			particleSize = new float[m_System.maxParticles];
+			endTargetPos = new Vector3[m_System.main.maxParticles];
+			particleSize = new float[m_System.main.maxParticles];
 			if(image!=null)
 				SetupEndTargets ();
 		}
